@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../../Home/Home';
@@ -8,9 +8,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons'; // Correct import sta
 
 const Tab = createBottomTabNavigator();
 
+
 const BottomTab = () => {
+    const { height, width } = useWindowDimensions();
+
+
+
     return (
-        <Tab.Navigator
+        <Tab.Navigator style={styles.continer}
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
@@ -23,11 +28,20 @@ const BottomTab = () => {
                         iconName = focused ? 'person' : 'person-outline';
                     }
 
-                    return <Ionicons name={iconName} size={size} color={color} />;
+                    return (
+                        <View style={styles.iconContainer}>
+                            <Ionicons name={iconName} size={size} color={color} />
+                        </View>
+                    );
                 },
+                tabBarLabel: ({ focused, color }) => (
+                    <Text style={[styles.tabBarLabel, { color: focused ? 'tomato' : 'rgb(117, 95, 228)' }]}>
+                        {route.name}
+                    </Text>
+                ),
                 tabBarActiveTintColor: 'tomato',
                 tabBarInactiveTintColor: 'gray',
-                tabBarStyle: styles.tabBar,
+                tabBarStyle: [styles.tabBar, { height: height * 0.09, left: width * 0.01, right: width * 0.01, bottom: height * 0.01 }],
                 headerShown: false,
             })}
         >
@@ -42,19 +56,26 @@ const styles = StyleSheet.create({
     tabBar: {
         backgroundColor: '#f9f9f9',
         borderTopWidth: 0,
-        elevation: 5, // Add shadow for Android
+        elevation: 10, // Add shadow for Android
         shadowOpacity: 0.1, // Add shadow for iOS
         shadowRadius: 10, // Add shadow for iOS
-        height: 60, // Increase the height of the tab bar
+        borderRadius: 30, // Round all corners
+        position: 'absolute',
+        padding: 5,
+
     },
-    continer: {
-        flex: 1,
-        justifyContent: 'center',
+    iconContainer: {
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        justifyContent: 'center',
+        flex: 1,
     },
-    text: {
-        color: ' green'
+    tabBarLabel: {
+        marginBottom: 5, // Move the text upwards
+        fontSize: 12, // Customize the font size
+        fontWeight: 'bold', // Customize the font weight
+
+
+
     }
 });
 

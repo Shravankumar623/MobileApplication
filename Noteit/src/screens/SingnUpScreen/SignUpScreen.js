@@ -23,7 +23,7 @@ const SignUpScreen = () => {
         console.warn("SignUp Sucessfully");
         console.warn(register);
         console.log(register);
-        // navigation.navigate('SignInScreen');
+        navigation.navigate('SignInScreen');
         navigation.navigate('Setting');
     }
 

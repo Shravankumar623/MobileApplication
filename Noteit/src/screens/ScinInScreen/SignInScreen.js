@@ -25,6 +25,7 @@ const SignInScreen = () => {
 
         console.warn("Signed In Sucessfully");
         console.log(data);
+        console.warn(data);
         console.log("Shravankumar");
         navigation.navigate('Home');
     }
