@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Home</Text> 
-        {/* <BottomTab/>  */}
     </View>
   )
 }
