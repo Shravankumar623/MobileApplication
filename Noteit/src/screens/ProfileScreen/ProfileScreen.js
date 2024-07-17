@@ -1,12 +1,18 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import { Avatar, Title, Caption, TouchableRipple, } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Correct import statement
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Correct import statement
 
 const ProfileScreen = () => {
+
+    const onPressFavorites = () => {
+        console.warn("FavoratePressed");
+
+
+    }
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.userInfoSection}>
                 <View style={{ flexDirection: 'row', marginTop: 15 }}>
                     <Avatar.Image
@@ -40,8 +46,11 @@ const ProfileScreen = () => {
                 </View>
             </View>
             <View style={styles.amountBoxWrapper}>
-                <View style={styles.amountBox}>
-                    <Title>$ 2454</Title>
+                <View style={[styles.amountBox, {
+                    borderRightColor: "#dddddd",
+                    borderRightWidth: 1,
+                }]}>
+                    <Title >$ 2454</Title>
                     <Caption>Credit Amount</Caption>
                 </View>
                 <View style={styles.amountBox}>
@@ -50,7 +59,74 @@ const ProfileScreen = () => {
                 </View>
 
             </View>
-        </SafeAreaView>
+            <View style={styles.menuWrapper}>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Icon name="heart-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Your Favorites </Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Icon name="credit-card" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Payment </Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Icon name="share-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Tell Your Friends</Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Icon name="account-check-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Support </Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Ionicons name="settings-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Setting </Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Ionicons name="settings-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Setting </Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Ionicons name="settings-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Setting </Text>
+
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple onPress={onPressFavorites}>
+                    <View style={styles.menueItem}>
+
+                        <Ionicons name="settings-outline" color="#FF6347" size={25} />
+                        <Text style={styles.menuItemText}>Setting </Text>
+
+                    </View>
+                </TouchableRipple>
+
+            </View>
+        </ScrollView>
     )
 }
 
@@ -60,6 +136,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
+        marginBottom: 25,
 
     },
     userInfoSection: {
@@ -85,5 +162,31 @@ const styles = StyleSheet.create({
         height: 100,
 
     },
+    amountBox: {
+        width: '50%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    menuWrapper: {
+
+        marginTop: 10,
+
+    },
+    menueItem: {
+
+        flexDirection: 'row',
+        paddingHorizontal: 30,
+        paddingVertical: 15,
+    },
+    menuItemText: {
+
+        color: '#777777',
+        marginLeft: 10,
+        fontWeight: '600',
+        fontSize: 16,
+        lineHeight: 26,
+    }
+
+
 
 })

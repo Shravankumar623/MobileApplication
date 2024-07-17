@@ -9,6 +9,7 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
 import { TextInput } from 'react-native-gesture-handler';
+import axios from 'axios';
 
 
 const SignInScreen = () => {
@@ -21,13 +22,28 @@ const SignInScreen = () => {
 
 
     const { height } = useWindowDimensions();
-    const onSignInPressed = (data) => {
-
-        console.warn("Signed In Sucessfully");
+    const onSignInPressed = async (data) => {
+        console.warn("Signed In Successfully");
         console.log(data);
-        console.warn(data);
         navigation.navigate('Home');
-    }
+
+        // const { phoneNumber, password } = data;
+        // const url = `http://192.168.3.60:8080/login`;
+
+        // try {
+        //     const response = await axios.get(url, {
+        //         params: {
+        //             phone: phoneNumber,
+        //             password: password
+        //         }
+        //     });
+
+        //     console.log("Response Data:", response.data);
+        //     
+        // } catch (error) {
+        //     console.error("Error:", error);
+        // }
+    };
     const onForgotPasswordPressed = () => {
         console.warn("onForgotPasswordPressed");
         navigation.navigate('ForgetPasswordScreen');

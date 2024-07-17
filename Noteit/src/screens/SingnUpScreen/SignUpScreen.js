@@ -4,6 +4,7 @@ import CustomInput from '../../components/CustomInputs/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
+import axios from 'axios';
 
 
 const SignUpScreen = () => {
@@ -18,13 +19,19 @@ const SignUpScreen = () => {
     const pwdWatch = watch('password');
 
 
-    const onSignUpPressed = (register) => {
+    const onSignUpPressed = async (register) => {
 
-        console.warn("SignUp Sucessfully");
-        console.warn(register);
-        console.log(register);
-        navigation.navigate('SignInScreen');
-        // navigation.navigate('Setting');
+        console.log("SignUp Successfully");  // While Deploying need to Commit this line
+        console.log(register);               // While Deploying need to Commit this line
+
+        try {
+            const response = await axios.post('http://192.168.3.60:8080/register', register);
+
+            console.log("Response Data:", response);
+            navigation.navigate('SignInScreen');
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 
     const onSignPressed = () => {
@@ -49,7 +56,14 @@ const SignUpScreen = () => {
 
                 <CustomInput
                     control={control}
-                    name="phoneNumber"
+                    name="name"
+                    placeholder='Name'
+                    secureTextEntry={false}
+                    rules={{ required: 'Name Required' }}
+                />
+                <CustomInput
+                    control={control}
+                    name="phone"
                     placeholder='PhoneNumber'
                     secureTextEntry={false}
                     rules={{ required: 'Phone Number Required', minLength: 10, maxLength: 10 }}
