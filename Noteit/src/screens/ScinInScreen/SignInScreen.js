@@ -15,7 +15,7 @@ const SignInScreen = () => {
 
     const navigation = useNavigation();
 
-    const { control, handleSubmit, formState : {errors} } = useForm();
+    const { control, handleSubmit, formState: { errors } } = useForm();
 
     // console.warn(errors);
 
@@ -26,7 +26,6 @@ const SignInScreen = () => {
         console.warn("Signed In Sucessfully");
         console.log(data);
         console.warn(data);
-        console.log("Shravankumar");
         navigation.navigate('Home');
     }
     const onForgotPasswordPressed = () => {
@@ -51,7 +50,7 @@ const SignInScreen = () => {
                 <CustomInput
                     control={control}
                     name='phoneNumber'
-                    rules={{required : 'User Name required', }}
+                    rules={{ required: 'User Name required', }}
                     placeholder='PhoneNumber'
                     secureTextEntry={false}
 
@@ -60,7 +59,7 @@ const SignInScreen = () => {
                 <CustomInput
                     control={control}
                     name='password'
-                    rules={{required : 'Password Required'}}d
+                    rules={{ required: 'Password Required' }}
                     placeholder='Passwowrd'
                     secureTextEntry={true}
                 />

@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import BottomTab from '../screens/Tabs/BottomTab'
+
 
 
 const Home = () => {
   return (
     <View style={styles.container}>
-        <Text style={styles.text}>Home</Text> 
+        <Text style={styles.text}>Home Screen</Text> 
     </View>
   )
 }

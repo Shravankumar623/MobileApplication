@@ -24,7 +24,7 @@ const SignUpScreen = () => {
         console.warn(register);
         console.log(register);
         navigation.navigate('SignInScreen');
-        navigation.navigate('Setting');
+        // navigation.navigate('Setting');
     }
 
     const onSignPressed = () => {
