@@ -3,12 +3,19 @@ import React from 'react'
 
 const EditProfileScreen = () => {
   return (
-    <View>
-      <Text>EditProfileScreen</Text>
+    <View style={styles.container}>
+      <Text>Edit Screen</Text>
+      <Text>The Profile edit will be done form here</Text>
     </View>
   )
 }
 
 export default EditProfileScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+})
