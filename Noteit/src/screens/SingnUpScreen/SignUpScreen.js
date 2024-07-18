@@ -97,7 +97,7 @@ const SignUpScreen = () => {
                     type="PRIMARY"
                 />
 
-                <Text style={styles.text}>By SignUp, you confiirm that you accept our
+                <Text style={styles.text}>By SignUp, you confirm that you accept our
                     <Text style={styles.link} onPress={onTermsOfUsePressed}> Terms of Use </Text> and
                     <Text style={styles.link} onPress={onPrivacyPolicyPressed}> Privacy Policy </Text>
                 </Text>
