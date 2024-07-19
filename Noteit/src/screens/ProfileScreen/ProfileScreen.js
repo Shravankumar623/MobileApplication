@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        marginBottom: 25,
+        // marginBottom: 25,
 
     },
     userInfoSection: {

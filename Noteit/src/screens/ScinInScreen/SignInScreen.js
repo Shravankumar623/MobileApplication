@@ -25,7 +25,7 @@ const SignInScreen = () => {
     const onSignInPressed = async (data) => {
         console.warn("Signed In Successfully");
         console.log(data);
-        navigation.navigate('Home');
+        navigation.navigate('HomeScreen');
 
         // const { phoneNumber, password } = data;
         // const url = `http://192.168.3.60:8080/login`;
