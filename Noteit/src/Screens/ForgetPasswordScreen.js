@@ -1,27 +1,25 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import CustomInput from '../../components/CustomInputs/CustomInput';
-import CustomButton from '../../components/CustomButton/CustomButton';
+import CustomInput from '../Components/CustomInput';
+import CustomButton from '../Components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
 
 
-
-const NewPasswordScreen = () => {
+const ForgetPasswordScreen = (forgotpassword) => {
 
     const navigation = useNavigation();
 
     const { control, handleSubmit, formState : {errors} } = useForm();
 
-    const onSubmitPressed = (resetpassword) => {
 
-        console.warn("Submit Sucessfully");
-        console.warn(resetpassword);
-        navigation.navigate('SignInScreen');
+    const onSendPressed = () => {
+        console.warn("Send Sucessfully");
+        console.warn(forgotpassword);
+        navigation.navigate('NewPasswordScreen');
     }
 
     const onBacktoSignInPressed = () => {
-
         console.warn("onBacktoSignInPressed");
         navigation.navigate('SignInScreen');
     }
@@ -30,26 +28,21 @@ const NewPasswordScreen = () => {
 
         <ScrollView
             showsVerticalScrollIndicator={false}>
-            <View style={styles.root}>
-                <Text style={styles.title}> New Password </Text>
-                <CustomInput
-                    control={control}
-                    name="code"
-                    placeholder='Enter your Code'
-                    secureTextEntry={false}
-                    rules={{ required: 'Code Required', }}
-                />
+            <View
+                style={styles.root}>
 
+                <Text style={styles.title}> Reset Your Password </Text>
                 <CustomInput
+
                     control={control}
-                    name="password"
-                    placeholder='Passwowrd'
-                    secureTextEntry={true}
-                    rules={{ required: 'Password Required', }}
+                    name="email"
+                    placeholder='Email'
+                    secureTextEntry={false}
+                    rules={{ required: 'Email required', }}
                 />
                 <CustomButton
-                    text="Submit"
-                    onPress={handleSubmit(onSubmitPressed)}
+                    text="Send"
+                    onPress={handleSubmit(onSendPressed)}
                     type="PRIMARY"
                 />
 
@@ -83,4 +76,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default NewPasswordScreen
+export default ForgetPasswordScreen

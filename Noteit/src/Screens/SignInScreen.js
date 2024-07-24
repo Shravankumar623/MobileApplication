@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView } from 'react-native'
 // import SharpTechLogo from '../assets/SharpTechLogo.png';
 // import Logo_2 from '../assets/Logo_2.png';
-import Logo_2 from '../../assets/Logo_2.png';
+import Logo_2 from "../assets/images/Logo_2.png";
 // import Logo from '../../../Noteit/assests/images/Logo.png';
-import CustomInput from '../../components/CustomInputs/CustomInput';
-import CustomButton from '../../components/CustomButton/CustomButton';
+import CustomInput from '../Components/CustomInput';
+import CustomButton from '../Components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
 import { TextInput } from 'react-native-gesture-handler';
 import axios from 'axios';
+import { AuthContext } from '../Context/AuthContext';
 
 
 const SignInScreen = () => {
+
+    const { login } = useContext(AuthContext);
 
     const navigation = useNavigation();
 
@@ -20,29 +23,15 @@ const SignInScreen = () => {
 
     // console.warn(errors);
 
+    const [successMessage, setSuccessMessage] = useState('');
 
     const { height } = useWindowDimensions();
+
     const onSignInPressed = async (data) => {
-        console.warn("Signed In Successfully");
+        // console.warn("Signed In Successfully");
         console.log(data);
-        navigation.navigate('HomeScreen');
-
-        // const { phoneNumber, password } = data;
-        // const url = `http://192.168.3.60:8080/login`;
-
-        // try {
-        //     const response = await axios.get(url, {
-        //         params: {
-        //             phone: phoneNumber,
-        //             password: password
-        //         }
-        //     });
-
-        //     console.log("Response Data:", response.data);
-        //     
-        // } catch (error) {
-        //     console.error("Error:", error);
-        // }
+        await login(data);
+        setSuccessMessage('Signed In Successfully');
     };
     const onForgotPasswordPressed = () => {
         console.warn("onForgotPasswordPressed");
@@ -62,6 +51,7 @@ const SignInScreen = () => {
                 <Text style={styles.title}>
                     SignIn to your account
                 </Text>
+                {/* <Text style={{color: 'black'}}>{test}</Text> */}
 
                 <CustomInput
                     control={control}
@@ -85,6 +75,9 @@ const SignInScreen = () => {
                     onPress={handleSubmit(onSignInPressed)}
                     type="PRIMARY"
                 />
+                {successMessage ? (
+                    <Text style={{ marginTop: 20, color: 'green', fontSize: 16, textAlign: 'center' }}>{successMessage}</Text>
+                ) : null}
 
                 <CustomButton
                     text="Forgot Passowrd?"
@@ -96,6 +89,8 @@ const SignInScreen = () => {
                     onPress={singnUpPressed}
                     type="TERTIARY"
                 />
+
+
 
             </View>
         </ScrollView>

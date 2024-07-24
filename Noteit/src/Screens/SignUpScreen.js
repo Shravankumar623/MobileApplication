@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import CustomInput from '../../components/CustomInputs/CustomInput';
-import CustomButton from '../../components/CustomButton/CustomButton';
+import CustomInput from '../Components/CustomInput';
+import CustomButton from '../Components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from "react-hook-form";
-import axios from 'axios';
+import UserService from '../UserService/UserService';
+import { ActivityIndicator } from 'react-native-paper';
 
 
 const SignUpScreen = () => {
 
+    const [isLoading, setIsLoading] = useState(false);
     const navigation = useNavigation();
     const { control, handleSubmit, watch } = useForm({
         // defaultValues:{
@@ -19,20 +21,36 @@ const SignUpScreen = () => {
     const pwdWatch = watch('password');
 
 
+    // const onSignUpPressed = async (register) => {
+
+    //     console.log("SignUp Successfully");  // While Deploying need to Commit this line
+    //     console.log("In Sign UP", register);               // While Deploying need to Commit this line
+
+    //     try {
+    //         const response = await UserService.register(register);
+
+    //         console.log("Response Data in Sign up:", response.data);
+    //         navigation.navigate('SignInScreen');
+    //     } catch (error) {
+    //         console.error("Signup:", error);
+    //     }
+    // }
+
+
     const onSignUpPressed = async (register) => {
-
         console.log("SignUp Successfully");  // While Deploying need to Commit this line
-        console.log(register);               // While Deploying need to Commit this line
-
+        console.log("In Sign UP", register);  // While Deploying need to Commit this line
+        setIsLoading(true);
         try {
-            const response = await axios.post('http://192.168.3.60:8080/register', register);
 
-            console.log("Response Data:", response);
+            const response = await UserService.register(register);
+            console.log("Response Data in Sign up:", response);
             navigation.navigate('SignInScreen');
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Signup:", error);
         }
-    }
+        setIsLoading(false);
+    };
 
     const onSignPressed = () => {
 
@@ -44,6 +62,15 @@ const SignUpScreen = () => {
     }
     const onPrivacyPolicyPressed = () => {
         console.warn("Privacy Policy Pressed");
+    }
+
+    if (isLoading) {
+        return (
+
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size={'large'} />
+            </View>
+        );
     }
     return (
 
@@ -103,7 +130,9 @@ const SignUpScreen = () => {
                 </Text>
 
                 <CustomButton text="Have an a account ? SignIn " onPress={onSignPressed} type="TERTIARY" />
+
             </View>
+
         </ScrollView>
     )
 }

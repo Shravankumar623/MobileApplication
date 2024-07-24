@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import CustomInput from '../../components/CustomInputs/CustomInput';
-import CustomButton from '../../components/CustomButton/CustomButton';
-
+import CustomInput from '../Components/CustomInput';
+import CustomButton from '../Components/CustomButton';
 
 const VerifyEmailScreen = () => {
 

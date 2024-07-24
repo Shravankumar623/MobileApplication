@@ -1,15 +1,17 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Avatar, Title, Caption, TouchableRipple, } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Correct import statement
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Correct import statement
+import { AuthContext } from '../Context/AuthContext';
 
 const ProfileScreen = () => {
 
+
+    const { userInfo } = useContext(AuthContext);
+
     const onPressFavorites = () => {
         console.warn("FavoratePressed");
-
-
     }
     return (
         <ScrollView style={styles.container}>
@@ -26,8 +28,8 @@ const ProfileScreen = () => {
                             marginTop: 15,
                             marginBottom: 0,
 
-                        }]}>Shravankumar</Title>
-                        <Caption style={styles.Caption}>@_shravankumar0219</Caption>
+                        }]}>{userInfo.name}</Title>
+                        <Caption style={styles.Caption}>{userInfo.id}</Caption>
                     </View>
                 </View>
             </View>
@@ -38,11 +40,11 @@ const ProfileScreen = () => {
                 </View>
                 <View style={styles.row}>
                     <Ionicons name="phone-portrait-outline" size={20} color='#777777' />
-                    <Text style={{ color: 'green', marginLeft: 10, fontWeight: 'bold' }}>9449983623</Text>
+                    <Text style={{ color: 'green', marginLeft: 10, fontWeight: 'bold' }}>{userInfo.phone}</Text>
                 </View>
                 <View style={styles.row}>
                     <Icon name="email" size={20} color='#777777' />
-                    <Text style={{ color: 'green', marginLeft: 10, fontWeight: 'bold' }}>sharptechshravankumar@gmail.com</Text>
+                    <Text style={{ color: 'green', marginLeft: 10, fontWeight: 'bold' }}>{userInfo.email}</Text>
                 </View>
             </View>
             <View style={styles.amountBoxWrapper}>

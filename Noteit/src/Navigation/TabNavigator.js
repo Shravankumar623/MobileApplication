@@ -2,9 +2,9 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import SettingScreen from '../screens/SettingScreen/SettingScreen';
-import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
+import HomeScreen from '../Screens/HomeScreen';
+import SettingScreen from '../Screens/SettingScreen';
+import ProfileScreen from '../Screens/ProfileScreen';
 import IconIcons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 
