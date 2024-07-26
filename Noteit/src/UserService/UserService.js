@@ -5,7 +5,7 @@ class UserService {
 
     
 
-    static BASE_URL = "http://192.168.3.60:8080"
+    static BASE_URL = "http://192.168.3.53:8080"
 
     static async register(register) {
         try {

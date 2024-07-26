@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     const login = async (data) => {
         setIsLoading(true);
         const { phoneNumber, password } = data;
-        const url = `http://192.168.3.60:8080/login`;
+        const url = `http://192.168.3.53:8080/login`;
 
         try {
             const response = await axios.get(url, {
